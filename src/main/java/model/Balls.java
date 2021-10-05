@@ -39,13 +39,13 @@ public class Balls {
 
 	private void validateSize(List<Integer> ballNumbers) {
 		if (ballNumbers.size() != BALL_NUMBER_SIZE) {
-			throw new IllegalArgumentException("입력한 수가 3자리 수가 아닙니다");
+			throw new IllegalArgumentException("[ERROR] 입력한 수가 3자리 수가 아닙니다");
 		}
 	}
 
 	private void validateDuplicate(List<Integer> ballNumbers) {
 		if (new HashSet<>(ballNumbers).size() < BALL_NUMBER_SIZE) {
-			throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다");
+			throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력하셨습니다");
 		}
 	}
 

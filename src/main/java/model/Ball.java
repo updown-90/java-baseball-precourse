@@ -31,7 +31,7 @@ public class Ball {
 
 	private void validateRange(int ballNumber) {
 		if (ballNumber < BALL_MIN_NUMBER || ballNumber > BALL_MAX_NUMBER) {
-			throw new IllegalArgumentException("입력한 수가 1부터 9까지 정수가 아닙니다");
+			throw new IllegalArgumentException("[ERROR] 입력한 수가 1부터 9까지 정수가 아닙니다");
 		}
 	}
 

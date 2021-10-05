@@ -8,33 +8,36 @@ import view.OutputView;
 
 public class BaseBallGame {
 
-	private static final int RESTART_NUMBER_FLAG = 1;
+	private static final String RESTART_NUMBER_FLAG = "1";
 	private static boolean isRestart = true;
 
 	public void gameStart() {
-		RandomBallNumberGenerator randomBallNumberGenerator = new RandomBallNumberGenerator();
+		try {
+			RandomBallNumberGenerator randomBallNumberGenerator = new RandomBallNumberGenerator();
 
-		while (isRestart) {
-			BaseBallGameResult baseBallGameResult = new BaseBallGameResult(
-				new Balls(randomBallNumberGenerator.getRandomBallNumbers()),
-				new Balls(InputView.scannerUserInputNumber()));
+			while (isRestart) {
+				BaseBallGameResult baseBallGameResult = new BaseBallGameResult(
+					new Balls(randomBallNumberGenerator.getRandomBallNumbers()),
+					new Balls(InputView.scannerUserInputNumber()));
 
-			answerCheck(baseBallGameResult);
+				answerCheck(baseBallGameResult);
+			}
+		} catch (IllegalArgumentException exception) {
+			System.out.println(exception.getMessage());
+			gameStart();
 		}
-
 	}
 
 	private void answerCheck(BaseBallGameResult baseBallGameResult) {
+		OutputView.printBaseBallGameResult(baseBallGameResult);
+
 		if (baseBallGameResult.isAnswer()) {
 			restartOrEnd();
-			return;
 		}
-
-		OutputView.printBaseBallGameResult(baseBallGameResult);
 	}
 
 	private void restartOrEnd() {
-		if (InputView.scannerRestartOrEndNumber() == RESTART_NUMBER_FLAG) {
+		if (RESTART_NUMBER_FLAG.equals(InputView.scannerRestartOrEndNumber())) {
 			gameStart();
 		}
 

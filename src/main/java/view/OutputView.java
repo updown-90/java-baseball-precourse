@@ -10,7 +10,7 @@ public class OutputView {
 			return;
 		}
 
-		System.out.printf("%d 스트라이크, %d 볼 %n", baseBallGameResult.getStrikeCount(), baseBallGameResult.getBallCount());
+		System.out.printf("%d스트라이크 %d볼 %n", baseBallGameResult.getStrikeCount(), baseBallGameResult.getBallCount());
 	}
 
 }

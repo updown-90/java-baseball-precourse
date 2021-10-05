@@ -1,8 +1,9 @@
 package model;
 
+import nextstep.utils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RandomBallNumberGenerator {
 
@@ -21,13 +22,12 @@ public class RandomBallNumberGenerator {
 
 	private void validateLength() {
 		if (randomBallNumbers.size() != RANDOM_BALL_NUMBER_SIZE) {
-			throw new IllegalArgumentException("중복된 숫자가 생성되었습니다");
+			throw new IllegalArgumentException("[ERROR] 중복된 숫자가 생성되었습니다");
 		}
 	}
 
 	private void createRandomNumber() {
-		Random random = new Random();
-		int createRandomNumber = random.nextInt(8) + 1;
+		int createRandomNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
 		createRandomNumbers(createRandomNumber);
 	}
 
@@ -43,7 +43,7 @@ public class RandomBallNumberGenerator {
 
 	protected boolean isInRange(int randomBallNumber) {
 		if (randomBallNumber < RANDOM_MIN_NUMBER || randomBallNumber > RANDOM_MAX_NUMBER) {
-			throw new IllegalArgumentException("생성된 수가 1부터 9까지 정수가 아닙니다");
+			throw new IllegalArgumentException("[ERROR] 생성된 수가 1부터 9까지 정수가 아닙니다");
 		}
 
 		return true;
